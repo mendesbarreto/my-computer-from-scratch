@@ -58,6 +58,10 @@ CPUEmulator.sh
 
 You can run any of the scripts from any where in the system.
 
+### Tools
+
+- [Hardware description langauge and Hardware simulator ONLINE](http://dmitrysoshnikov.com/hdl-hardware-simulator)
+
 ## Contributing
 
 While this is a personal journey, I welcome insights, suggestions, and discussions from fellow enthusiasts. Feel free to fork this project, submit pull requests, or open issues for any ideas or suggestions you might have.
