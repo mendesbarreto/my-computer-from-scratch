@@ -20,6 +20,7 @@
 // if (ny == 1) sets y = !y       // bitwise not
 // if (f == 1)  sets out = x + y  // integer 2's complement addition
 // if (f == 0)  sets out = x & y  // bitwise and
+//
 // if (no == 1) sets out = !out   // bitwise not
 
 CHIP ALU {
@@ -42,7 +43,6 @@ CHIP ALU {
     Not16(in=zdx, out=notzdx);
     Mux16(a=zdx, b=notzdx, sel=nx, out=resx);
 
-
     // Solving Y
     Mux16(a=y, b[0..15]=false, sel=zy, out=zdy);
     Not16(in=zdy, out=notzdy);
@@ -55,18 +55,21 @@ CHIP ALU {
     And16(a=resx, b=resy, out=andxy);
 
     // Selects the F operation
-    Mux16(a=addxy, b=andxy, sel=f, out=fout);
+    Mux16(a=andxy, b=addxy, sel=f, out=fout);
 
     // Solving Not
     Not16(in=fout, out=notfout);
 
     // Solving zero
-    Or16Way(in=fout, out=orfout);
+    Or16Way(in=finalout, out=orfout);
     Not(in=orfout, out=zr);
    
     // Solving Out put negation
-    Mux16(a=fout, b=notfout, sel=no, out=out);
+    Mux16(a=fout, b=notfout, sel=no, out=finalout);
 
     // Solving NG
-    And16(a=fout, b[0..15]=true, out[15]=ng, out[0..14]=drop);
+    And16(a[0..15]=true, b=finalout, out[15]=ng, out[0..14]=drop);
+
+    // Solving Out
+    Or16(a=finalout, b[0..15]=false, out=out);
 }
