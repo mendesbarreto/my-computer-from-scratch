@@ -1,32 +1,35 @@
-@R0
-M=0
-@R1
-M=0
 @R2
 M=0
-@i
-M=0
+
+@R0
+D=M
+@LOOP
+D;JGT
 
 (LOOP)
-  @i
-  D=M
-
-  @R1
-  D=M-D
-  @END
-  D;JEQ
-
   @R0
   D=M
 
-  @R2
-  M=D+M
+  @R0
+  D=M
+  @END
+  D;JEQ
 
-  @i
-  M=M+1
+  @R2
+  D=M
+
+  @R1
+  D=D+M
+
+  @R2
+  M=D
+
+  @R0
+  D=M-1
+  M=D
 
   @LOOP
-  0; JMP
+  D; JGT
 
 (END)
   @END
