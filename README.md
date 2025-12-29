@@ -24,7 +24,7 @@ This project is more than just about building a computer; it's about deepening m
 
 ### The Elements of Computing Systems
 
-- [x] Chapter 1: Introduction to Computing Systems
+- [ ] Chapter 1: Introduction to Computing Systems
 - [ ] Chapter 2: Building the Hardware
 - [ ] Chapter 3: Basic Software Development
 - [ ] Chapter 4: Advanced Software Projects
